@@ -1,0 +1,24 @@
+#服务名称
+spring:
+  application:
+    name: app-project-order
+  profiles:
+    active: dev
+
+#服务端口号
+server:
+  port: 9002
+
+#Eureka配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9000/eureka/
+
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:127.0.0.1:${server.port} #127.0.0.1:${server.port}
+
+service:
+  member:
+    url: http://127.0.0.1:9001/

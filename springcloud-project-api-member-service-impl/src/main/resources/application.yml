@@ -1,0 +1,18 @@
+#服务名称
+spring:
+  application:
+    name: app-project-member
+
+#服务端口
+server:
+  port: 9001
+
+#Eureka配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:127.0.0.1:${server.port} #127.0.0.1:${server.port}

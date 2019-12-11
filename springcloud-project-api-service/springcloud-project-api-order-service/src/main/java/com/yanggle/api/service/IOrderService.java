@@ -6,4 +6,7 @@ public interface IOrderService {
 
     @RequestMapping("/orderToMember")
     String orderToMember(String name);
+
+    @RequestMapping("/upload")
+    String uploadToMember(String name);
 }

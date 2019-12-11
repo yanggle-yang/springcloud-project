@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Profile;
 @Profile("dev")
 @Configuration
 public class FeignConfiguration {
-    @Bean
+    /*@Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
-    }
+    }*/
 }

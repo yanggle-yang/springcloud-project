@@ -15,4 +15,4 @@ eureka:
 
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:127.0.0.1:${server.port} #127.0.0.1:${server.port}
+    instance-id: ${spring.application.name}:localhost:${server.port}

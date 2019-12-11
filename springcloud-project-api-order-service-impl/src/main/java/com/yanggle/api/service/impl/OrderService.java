@@ -34,8 +34,16 @@ public class OrderService implements IOrderService {
         return (user == null)?"未知会员":user.toString();
     }
 
-    @RequestMapping("/upload")
-    public String uploadToMember(String name) {
+    @RequestMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploadToMember(@RequestParam("file") MultipartFile file) {
+        return memberServiceFeign.upload(file);
+    }
+
+    @RequestMapping(value = "/uploadLocal")
+    public String uploadLocalToMember(String fileName) {
+        if(fileName == null || fileName.isEmpty())
+            fileName = "application.yml";
+
         //获取跟目录
         File path = null;
         try {
@@ -46,7 +54,7 @@ public class OrderService implements IOrderService {
         if(!path.exists()) path = new File("");
         log.info("path:"+path.getAbsolutePath());
 
-        File file = new File(path.getAbsolutePath()+"\\application.yml");
+        File file = new File(path.getAbsolutePath() + "/" + fileName);
         DiskFileItemFactory factory = new DiskFileItemFactory();
         DiskFileItem fileItem = (DiskFileItem) factory.createItem("file",
                 /*"text/x-yaml"*/ MediaType.MULTIPART_FORM_DATA_VALUE, true, file.getName());

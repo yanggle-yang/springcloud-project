@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("dev")
 @Configuration
-public class FeignConfiguration {
-    /*@Bean
+public class FeignLoggerLevelConfiguration {
+    @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
-    }*/
+    }
 }

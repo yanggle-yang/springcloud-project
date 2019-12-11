@@ -10,9 +10,6 @@ public interface IMemberService {
     @RequestMapping("/getMember")
     User getMember(String name);
 
-    @RequestMapping(value = "/upload",method = RequestMethod.POST,
-            produces = {MediaType.APPLICATION_JSON_VALUE},
-            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ResponseBody
-    String upload(@RequestPart("file") MultipartFile file);
+    @RequestMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    String upload(@RequestParam("file") MultipartFile file);
 }

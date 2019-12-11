@@ -25,11 +25,8 @@ public class MemberService implements IMemberService {
         return user;
     }
 
-    @RequestMapping(value = "/upload",method = RequestMethod.POST,
-            produces = {MediaType.APPLICATION_JSON_VALUE},
-            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ResponseBody
-    public String upload(@RequestPart("file") MultipartFile file) {
+    @RequestMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String upload(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
             return "上传失败，请选择文件";
         }

@@ -14,9 +14,6 @@ public interface MemberServiceFeign extends IMemberService {
     @RequestMapping("/getMember")
     User getMember(@RequestParam("name")String name);
 
-    @RequestMapping(value = "/upload",method = RequestMethod.POST,
-            produces = {MediaType.APPLICATION_JSON_VALUE},
-            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ResponseBody
+    @RequestMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     String upload(@RequestPart("file") MultipartFile file);
 }
